@@ -1,3 +1,4 @@
+import 'package:ai_app/widgets/search_bar_button.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ai_app/theme/colors.dart';
@@ -36,7 +37,22 @@ class SearchSection extends StatelessWidget {
                   border: InputBorder.none,
                 ),
               ),
-              
+              Row(
+                children:[
+                 SearchBarButton(),
+                 const SizedBox(height: 8),
+                 SearchBarButton(),
+                 const Spacer(),
+                 Container(
+                  padding: EdgeInsets.all(10) ,
+                  decoration:BoxDecoration(
+                   color: AppColors.submitButton,
+                   borderRadius: BorderRadius.circular(40), 
+                  ),
+                  child: const Icon(Icons.arrow_forward,color:AppColors.background, size: 15,),
+                 ) 
+                ]
+              )
             ]
           ),
         )
