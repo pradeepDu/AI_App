@@ -1,3 +1,4 @@
+import 'package:ai_app/widgets/search_section.dart';
 import 'package:ai_app/widgets/side_bar.dart';
 import 'package:flutter/material.dart';
 
@@ -11,8 +12,10 @@ class HomePage extends StatelessWidget {
       body:Row(children: [
         SideBar(),
         Column(children: [
-          
-
+          Expanded(child: SearchSection()),
+          Container(
+            height: 20,
+          ),
         ],)
       ],)
      
