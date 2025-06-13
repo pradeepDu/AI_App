@@ -23,35 +23,51 @@ class SearchSection extends StatelessWidget {
         const SizedBox(height: 32),
         Container(
           width:700,
-          decoration:BoxDecoration(color:AppColors.searchBar,),
+          decoration:BoxDecoration(color:AppColors.searchBar,
+          borderRadius: BorderRadius.circular(10)),
+          
           child: Column(
             children:[
-              TextField(
-                decoration:InputDecoration(
-                  hintText: "Search for anything...",
-                  hintStyle: GoogleFonts.ibmPlexSans(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w400,
-                    color: AppColors.iconGrey,
+              Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: TextField(
+                  decoration:InputDecoration(
+                    hintText: "Search for anything...",
+                    hintStyle: GoogleFonts.ibmPlexSans(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w400,
+                      color: AppColors.iconGrey,
+                    ),
+                    border: InputBorder.none,
                   ),
-                  border: InputBorder.none,
                 ),
               ),
-              Row(
-                children:[
-                 SearchBarButton(),
-                 const SizedBox(height: 8),
-                 SearchBarButton(),
-                 const Spacer(),
-                 Container(
-                  padding: EdgeInsets.all(10) ,
-                  decoration:BoxDecoration(
-                   color: AppColors.submitButton,
-                   borderRadius: BorderRadius.circular(40), 
-                  ),
-                  child: const Icon(Icons.arrow_forward,color:AppColors.background, size: 15,),
-                 ) 
-                ]
+              Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: Row(
+                  children:[
+                   SearchBarButton(
+                    icon: Icons.auto_awesome_outlined,
+                    text:"Focus",
+                   ),
+                   const SizedBox(height: 8),
+                   SearchBarButton(
+                    icon:Icons.circle_notifications_outlined,
+                    text : "Search",
+                   ),
+                   const Spacer(
+                    
+                   ),
+                   Container(
+                    padding: EdgeInsets.all(10) ,
+                    decoration:BoxDecoration(
+                     color: AppColors.submitButton,
+                     borderRadius: BorderRadius.circular(40), 
+                    ),
+                    child: const Icon(Icons.arrow_forward,color:AppColors.background, size: 15,),
+                   ) 
+                  ]
+                ),
               )
             ]
           ),
