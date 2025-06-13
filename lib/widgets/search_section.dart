@@ -65,7 +65,7 @@ class SearchSection extends StatelessWidget {
                      borderRadius: BorderRadius.circular(40), 
                     ),
                     child: const Icon(Icons.arrow_forward,color:AppColors.background, size: 15,),
-                   ) 
+                   )  
                   ]
                 ), 
               )
