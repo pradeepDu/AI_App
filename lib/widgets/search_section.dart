@@ -67,7 +67,7 @@ class SearchSection extends StatelessWidget {
                     child: const Icon(Icons.arrow_forward,color:AppColors.background, size: 15,),
                    ) 
                   ]
-                ),
+                ), 
               )
             ]
           ),
