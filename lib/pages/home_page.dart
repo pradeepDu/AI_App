@@ -9,64 +9,54 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column( // Changed from Row to Column
+      body: Row(
         children: [
-          Expanded( // Main content area
-            child: Row(
+          const SideBar(),
+          Expanded(
+            child: Column(
               children: [
-                const SideBar(),
-                const Expanded(
-                  child: SearchSection(),
-                ),
-              ],
-            ),
-          ),
-          // Footer at the bottom
-          Container(
-            width: double.infinity,
-            padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 20),
-            color: AppColors.background, // Optional: add background color
-            child: Wrap(
-              alignment: WrapAlignment.center, // Center the footer content
-              children: [
-                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 8),
-                  child: Text(
-                    'Enterprise',
-                    style: TextStyle(
-                      fontSize: 14,
-                      color: AppColors.footerGrey,
-                    ),
+                const Expanded(child: SearchSection()),
+                // Footer moved inside the Column
+                Container(
+                  width: double.infinity,
+                  padding: const EdgeInsets.symmetric(
+                    vertical: 16,
+                    horizontal: 20,
                   ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 8),
-                  child: Text(
-                    'Privacy',
-                    style: TextStyle(
-                      fontSize: 14,
-                      color: AppColors.footerGrey,
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 8),
-                  child: Text(
-                    'Terms',
-                    style: TextStyle(
-                      fontSize: 14,
-                      color: AppColors.footerGrey,
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 8),
-                  child: Text(
-                    'Pro',
-                    style: TextStyle(
-                      fontSize: 14,
-                      color: AppColors.footerGrey,
-                    ),
+                  color: AppColors.background,
+                  child: Wrap(
+                    alignment: WrapAlignment.center,
+                    spacing: 16, // Add spacing between items
+                    children: const [
+                      Text(
+                        'Enterprise',
+                        style: TextStyle(
+                          fontSize: 14,
+                          color: AppColors.footerGrey,
+                        ),
+                      ),
+                      Text(
+                        'Privacy',
+                        style: TextStyle(
+                          fontSize: 14,
+                          color: AppColors.footerGrey,
+                        ),
+                      ),
+                      Text(
+                        'Terms',
+                        style: TextStyle(
+                          fontSize: 14,
+                          color: AppColors.footerGrey,
+                        ),
+                      ),
+                      Text(
+                        'Pro',
+                        style: TextStyle(
+                          fontSize: 14,
+                          color: AppColors.footerGrey,
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ],
