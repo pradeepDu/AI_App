@@ -24,7 +24,11 @@ class SearchSection extends StatelessWidget {
         Container(
           width:700,
           decoration:BoxDecoration(color:AppColors.searchBar,
-          borderRadius: BorderRadius.circular(10)),
+          borderRadius: BorderRadius.circular(10),
+          border :Border.all(
+            color: AppColors.searchBarBorder,
+            width: 1.5,
+          ),),
           
           child: Column(
             children:[
@@ -39,7 +43,8 @@ class SearchSection extends StatelessWidget {
                       color: AppColors.iconGrey,
                     ),
                     border: InputBorder.none,
-                  ),
+                    isDense: true,
+                    contentPadding: EdgeInsets.zero,),
                 ),
               ),
               Padding(
