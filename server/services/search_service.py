@@ -34,7 +34,7 @@ class SearchService:
                     logger.error(f"Error processing result {url}: {str(e)}")
                     continue
 
-            logger.info(f"Processed {len(results)} results successfully")
+            logger.info(f"Processed {len(results)} result successfully")
             return results
 
         except Exception as e:
