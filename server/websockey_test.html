@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>WebSocket Test</title>
+</head>
+<body>
+    <h1>WebSocket Test</h1>
+    <button onclick="connectWebSocket()">Connect</button>
+    <button onclick="sendMessage()">Send Message</button>
+    <div id="output" style="border:1px solid #ccc; padding:10px; height:300px; overflow-y:scroll;"></div>
+
+    <script>
+        let socket;
+        
+        function log(message) {
+            const output = document.getElementById('output');
+            const line = document.createElement('div');
+            line.textContent = message;
+            output.appendChild(line);
+            output.scrollTop = output.scrollHeight;
+        }
+        
+        function connectWebSocket() {
+            log("Connecting to WebSocket...");
+            
+            // Create WebSocket connection
+            socket = new WebSocket("ws://localhost:8000/ws/chat");
+            
+            // Connection opened
+            socket.addEventListener("open", (event) => {
+                log("Connected to server!");
+            });
+            
+            // Listen for messages
+            socket.addEventListener("message", (event) => {
+                log("Received: " + event.data);
+            });
+            
+            // Connection closed
+            socket.addEventListener("close", (event) => {
+                log("Connection closed");
+            });
+            
+            // Connection error
+            socket.addEventListener("error", (event) => {
+                log("Error: Connection failed");
+            });
+        }
+        
+        function sendMessage() {
+            if (!socket || socket.readyState !== WebSocket.OPEN) {
+                log("Not connected!");
+                return;
+            }
+            
+            const message = JSON.stringify({query: "Who is Barack Obama?"});
+            log("Sending: " + message);
+            socket.send(message);
+        }
+    </script>
+</body>
+</html>
