@@ -1,11 +1,22 @@
+import 'package:ai_app/services/chat_web_services.dart';
 import 'package:ai_app/widgets/search_section.dart';
 import 'package:ai_app/widgets/side_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:ai_app/theme/colors.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  @override
+  void initState() {
+    super.initState();
+    ChatWebService().connect();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
