@@ -28,15 +28,7 @@ class _HomePageState extends State<HomePage> {
             child: Column(
               children: [
                 const Expanded(child: SearchSection()),
-                StreamBuilder(stream: ChatWebService().contentStream,
-                builder:(context,snapshot){
-                  if (snapshot.connectionState == ConnectionState.waiting) {
-                    return const Center
-                    (child: CircularProgressIndicator());
-                  }
-                  fullResponse += snapshot.data?['data'] ?? '';
-                  return Text(fullResponse);
-                }),
+                
                 // Footer moved inside the Column
                 Container(
                   width: double.infinity,
