@@ -1,41 +1,53 @@
+import 'package:ai_app/services/chat_web_services.dart';
 import 'package:ai_app/widgets/search_bar_button.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ai_app/theme/colors.dart';
 
-
-class SearchSection extends StatelessWidget {
+class SearchSection extends StatefulWidget {
   const SearchSection({super.key});
 
+  @override
+  State<SearchSection> createState() => _SearchSectionState();
+}
+
+class _SearchSectionState extends State<SearchSection> {
+  final queryController = TextEditingController();
+  @override
+  void dispose() {
+    queryController.dispose();
+    super.dispose();
+  }
   @override
   Widget build(BuildContext context) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Text("Yo GUrt",
-        style:GoogleFonts.ibmPlexSans(
-          fontSize: 20,
-          fontWeight: FontWeight.w400,
-          height:1.2,
-          letterSpacing: -0.5,
-        ),
+        Text(
+          "Yo GUrt",
+          style: GoogleFonts.ibmPlexSans(
+            fontSize: 20,
+            fontWeight: FontWeight.w400,
+            height: 1.2,
+            letterSpacing: -0.5,
+          ),
         ),
         const SizedBox(height: 32),
         Container(
-          width:700,
-          decoration:BoxDecoration(color:AppColors.searchBar,
-          borderRadius: BorderRadius.circular(10),
-          border :Border.all(
-            color: AppColors.searchBarBorder,
-            width: 1.5,
-          ),),
-          
+          width: 700,
+          decoration: BoxDecoration(
+            color: AppColors.searchBar,
+            borderRadius: BorderRadius.circular(10),
+            border: Border.all(color: AppColors.searchBarBorder, width: 1.5),
+          ),
+
           child: Column(
-            children:[
+            children: [
               Padding(
                 padding: const EdgeInsets.all(16.0),
                 child: TextField(
-                  decoration:InputDecoration(
+                  controller:queryController,
+                  decoration: InputDecoration(
                     hintText: "Search for anything...",
                     hintStyle: GoogleFonts.ibmPlexSans(
                       fontSize: 16,
@@ -44,39 +56,47 @@ class SearchSection extends StatelessWidget {
                     ),
                     border: InputBorder.none,
                     isDense: true,
-                    contentPadding: EdgeInsets.zero,),
+                    contentPadding: EdgeInsets.zero,
+                  ),
                 ),
               ),
               Padding(
                 padding: const EdgeInsets.all(10.0),
                 child: Row(
-                  children:[
-                   SearchBarButton(
-                    icon: Icons.auto_awesome_outlined,
-                    text:"Focus",
-                   ),
-                   const SizedBox(height: 8),
-                   SearchBarButton(
-                    icon:Icons.circle_notifications_outlined,
-                    text : "Search",
-                   ),
-                   const Spacer(
-                    
-                   ),
-                   Container(
-                    padding: EdgeInsets.all(10) ,
-                    decoration:BoxDecoration(
-                     color: AppColors.submitButton,
-                     borderRadius: BorderRadius.circular(40), 
+                  children: [
+                    SearchBarButton(
+                      icon: Icons.auto_awesome_outlined,
+                      text: "Focus",
                     ),
-                    child: const Icon(Icons.arrow_forward,color:AppColors.background, size: 15,),
-                   )  
-                  ]
-                ), 
-              )
-            ]
+                    const SizedBox(height: 8),
+                    SearchBarButton(
+                      icon: Icons.circle_notifications_outlined,
+                      text: "Search",
+                    ),
+                    const Spacer(),
+                    GestureDetector(
+                      onTap: () {
+                        ChatWebService().chat(queryController.text.trim());
+                      },
+                      child: Container(
+                        padding: EdgeInsets.all(10),
+                        decoration: BoxDecoration(
+                          color: AppColors.submitButton,
+                          borderRadius: BorderRadius.circular(40),
+                        ),
+                        child: const Icon(
+                          Icons.arrow_forward,
+                          color: AppColors.background,
+                          size: 15,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
           ),
-        )
+        ),
       ],
     );
   }
