@@ -38,6 +38,8 @@ dependencies:
   web_socket_client: ^0.2.1
   markdown: ^7.3.0
   flutter_markdown_plus: ^1.0.3
+  skeletonizer: ^2.1.0+1
+  shimmer: ^3.0.0
 
 dev_dependencies:
   flutter_test:

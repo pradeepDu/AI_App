@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ai_app/theme/colors.dart';
+
 
 class SideBarButton extends StatelessWidget {
   final bool isCollapsed;
@@ -27,8 +27,9 @@ class SideBarButton extends StatelessWidget {
         children: [
           Icon(
             icon,
-            color: AppColors.iconGrey,
-            size: 20,
+            color: Colors.white,
+            size: 28, // Larger size for better visibility
+            semanticLabel: text, // Add semantic label for accessibility
           ),
           if (!isCollapsed) ...[
             const SizedBox(width: 8),
@@ -38,6 +39,7 @@ class SideBarButton extends StatelessWidget {
                 style: const TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 14,
+                  color: Colors.white,
                 ),
                 overflow: TextOverflow.ellipsis,
               ),

@@ -13,6 +13,15 @@ class _SideBarState extends State<SideBar> {
   bool isCollapsed = true;
   @override
   Widget build(BuildContext context) {
+    // Check if we're on a mobile device - only show sidebar on larger screens
+    final screenWidth = MediaQuery.of(context).size.width;
+    final isMobile = screenWidth < 600;
+    
+    // Don't render the sidebar at all on mobile
+    if (isMobile) {
+      return const SizedBox.shrink(); // Return empty widget on mobile
+    }
+    
     return AnimatedContainer(
       duration:const Duration(milliseconds: 200),
       width: isCollapsed ? 60 : 120,
@@ -21,8 +30,19 @@ class _SideBarState extends State<SideBar> {
         
         children: [
            Container(
-            margin: EdgeInsets.symmetric(vertical:16,horizontal:16),
-            child:Icon(Icons.adb, color: AppColors.iconGrey, size:  isCollapsed ? 30 : 40),
+            margin: const EdgeInsets.symmetric(vertical:16, horizontal:16),
+            child: Icon(
+              Icons.adb, 
+              color: Colors.white, // Use white for better visibility
+              size: isCollapsed ? 34 : 44, // Larger icon size
+              shadows: const [
+                Shadow(
+                  color: Colors.black54,
+                  blurRadius: 3,
+                  offset: Offset(1, 1),
+                ),
+              ], // Add shadow for better contrast
+            ),
           ),
           Expanded(
             child: Column(
@@ -30,7 +50,7 @@ class _SideBarState extends State<SideBar> {
               children: [
                
                 const SizedBox(height: 40),
-                SideBarButton(isCollapsed: isCollapsed, icon: Icons.add, text: "Home"),
+                SideBarButton(isCollapsed: isCollapsed, icon: Icons.home, text: "Home"),
                
                 SideBarButton(isCollapsed: isCollapsed, icon: Icons.search, text: "Search"),
                 SideBarButton(isCollapsed: isCollapsed, icon: Icons.language, text: "Create"),
@@ -48,13 +68,25 @@ class _SideBarState extends State<SideBar> {
                       isCollapsed = !isCollapsed;
                     });
                   },
-                  child: AnimatedContainer(
-                    duration: const Duration(milliseconds: 200),
-                    margin: EdgeInsets.symmetric(vertical: 16,horizontal: 16),
+                  child: Container(
+                    padding: const EdgeInsets.all(8),
+                    margin: const EdgeInsets.symmetric(vertical: 16, horizontal: 8),
+                    decoration: BoxDecoration(
+                      color: AppColors.cardColor,
+                      borderRadius: BorderRadius.circular(20),
+                      border: Border.all(color: Colors.white10, width: 1),
+                    ),
                     child: Icon(
-                      isCollapsed ?Icons.keyboard_arrow_right:Icons.keyboard_arrow_left,
-                      color: AppColors.iconGrey,
-                      size: 20,
+                      isCollapsed ? Icons.keyboard_arrow_right : Icons.keyboard_arrow_left,
+                      color: Colors.white,
+                      size: 24, // Larger size
+                      shadows: const [
+                        Shadow(
+                          color: Colors.black54,
+                          blurRadius: 3,
+                          offset: Offset(1, 1),
+                        ),
+                      ], // Add shadow for better contrast
                     ),
                   ),
                 ),

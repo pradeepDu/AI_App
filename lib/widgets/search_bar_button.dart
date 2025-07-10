@@ -33,9 +33,27 @@ class _SearchBarButtonState extends State<SearchBarButton> {
         ),
         child: Row(
           children: [
-            Icon(widget.icon, color: AppColors.iconGrey, size: 20),
+            Icon(
+              widget.icon, 
+              color: Colors.white, // Force white color for visibility
+              size: 24, // Larger size
+              shadows: const [
+                Shadow(
+                  color: Colors.black54,
+                  blurRadius: 3,
+                  offset: Offset(1, 1),
+                ),
+              ], // Add shadow for better contrast
+            ),
             const SizedBox(width: 8),
-            Text(widget.text, style: TextStyle(color: AppColors.textGrey)),
+            Text(
+              widget.text, 
+              style: const TextStyle(
+                color: Colors.white, // Force white color for better visibility
+                fontSize: 15, // Slightly larger text
+                fontWeight: FontWeight.w500, // Medium weight for better visibility
+              ),
+            ),
           ],
         ),
       ),
