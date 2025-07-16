@@ -5,7 +5,7 @@ A cross-platform AI-powered chat and search application built with Flutter (mobi
 ## Features
 - **AI Chat:** Ask questions and get intelligent answers powered by LLMs (Gemini, Travily).
 - **Source Search:** See sources and references for each answer.
-- **Vector Search:** Uses Awell vector embeddings for semantic search and retrieval.
+- **Vector Search:** Uses Sentence Transformers for semantic search and retrieval.
 - **Responsive UI:** Works on mobile, web, and desktop with adaptive layouts.
 - **Shimmer/Skeleton Loading:** Modern loading effects for answers and sources.
 - **Sidebar Navigation:** Collapsible sidebar for desktop, hidden on mobile.
@@ -16,12 +16,12 @@ A cross-platform AI-powered chat and search application built with Flutter (mobi
 - **Backend:** FastAPI (Python)
 - **WebSocket:** Real-time communication between client and server
 - **LLM Integration:** Gemini, Travily (pluggable LLM services for generating answers)
-- **Vector Embeddings:** Awell (for semantic search and retrieval)
+- **Vector Embeddings:** Sentence Transformers (for semantic search and retrieval)
 
 ## LLMs and Embeddings
 - **Gemini:** Used for advanced language understanding and answer generation.
 - **Travily:** Used for conversational AI and chat context management.
-- **Awell Vector Embeddings:** Used to convert text and sources into high-dimensional vectors for similarity search, enabling semantic retrieval of relevant sources and context.
+- **Sentence Transformers:** Used to convert text and sources into high-dimensional vectors for similarity search, enabling semantic retrieval of relevant sources and context.
 
 ## Getting Started
 
@@ -62,7 +62,7 @@ A cross-platform AI-powered chat and search application built with Flutter (mobi
 - Type your question in the search bar and press the send button.
 - The app will show a shimmer effect while loading.
 - Answers and sources will appear in real-time as they are received from the backend.
-- The backend uses Awell vector embeddings to find the most relevant sources for your query.
+- The backend uses Sentence Transformers to find the most relevant sources for your query.
 - Answers are generated using Gemini and Travily LLMs, depending on the context and query type.
 
 ## Troubleshooting
